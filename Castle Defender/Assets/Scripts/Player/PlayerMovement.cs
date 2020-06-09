@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
     void TurnSprite(float x)
     {
-        transform.localScale = new Vector2(x, 1f);
+        transform.localScale = new Vector2(x / 2f, 0.5f);
     }
 
 }
