@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7327875387059895190}
   - component: {fileID: 8117637601479001932}
+  - component: {fileID: 3873476598378395826}
   - component: {fileID: 6748009156991735195}
   - component: {fileID: -6957497259651359183}
   - component: {fileID: -6800034513532561802}
   m_Layer: 0
   m_Name: Iron_01
-  m_TagString: Untagged
+  m_TagString: ToolTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,6 +87,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &3873476598378395826
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320215754003401894}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.27}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.68, y: 0.54}
+    newSize: {x: 1.02, y: 2.07}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.68, y: 0.54}
+  m_EdgeRadius: 0
 --- !u!210 &6748009156991735195
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -123,11 +150,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d18d26512ff7184fbe057a9e6f693a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceTargetName: Iron
-  minSupplyPerHit: 0
-  maxSupplyPerHit: 0
-  minFinalSupply: 0
-  maxFinalSupply: 0
+  targetResourceName: Iron
+  hitPoints: 5
+  canBeGatheredWith: 1
+  minSupplyPerHit: 2
+  maxSupplyPerHit: 5
+  minFinalSupply: 7
+  maxFinalSupply: 10
 --- !u!1 &3393786299568329473
 GameObject:
   m_ObjectHideFlags: 0
