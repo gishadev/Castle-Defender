@@ -11,8 +11,14 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Gear nowGear;
 
     public Transform handTrans;
+    [Space]
+    public Transform zRotatorTrans;
+    public float maxZ, minZ;
 
+    [Space]
     float gearDelay;
+
+    Camera cam;
     void Awake()
     {
         Instance = this;
@@ -20,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        cam = Camera.main;
         playerAnimator = GetComponent<Animator>();
     }
 
@@ -38,6 +45,28 @@ public class PlayerController : MonoBehaviour
             else
                 gearDelay -= Time.deltaTime;
         }
+
+        ZRotate();
+    }
+
+    void ZRotate()
+    {
+        Vector2 direction = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
+        if (direction.x > 0)
+            TurnPlayer(1f);
+        else if (direction.x < 0)
+        {
+            TurnPlayer(-1f);
+            direction *= new Vector2(-1f,1f);
+        }
+
+        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        zRotatorTrans.localRotation = Quaternion.Euler(transform.forward * Mathf.Clamp(rotZ, minZ, maxZ));
+    }
+    void TurnPlayer(float x)
+    {
+        transform.localScale = new Vector2(x * 0.5f, 0.5f);
     }
 
     public void TakeGear(InventoryGear invGear)

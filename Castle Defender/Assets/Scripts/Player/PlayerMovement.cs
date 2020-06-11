@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
 
+
     enum States
     {
         Idle,
@@ -24,11 +25,6 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-
-        if (moveInput.x > 0)
-            TurnSprite(1f);
-        else if (moveInput.x < 0)
-            TurnSprite(-1f);
 
         MovementAnimation();
         rb.velocity += new Vector2(HorizontalVel(), VerticalVel());
@@ -50,11 +46,17 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsInVerticalBounds(float y)
     {
-        return y > WorldBounds.Instance.b_Bottom.position.y && y < WorldBounds.Instance.b_Top.position.y;
+        if (!WorldBounds.Instance.castleBounds)
+            return y > WorldBounds.Instance.b_defaultMin.position.y && y < WorldBounds.Instance.b_defaultMax.position.y;
+        else
+            return y > WorldBounds.Instance.b_castleMin.position.y && y < WorldBounds.Instance.b_castleMax.position.y;
     }
     private bool IsInHorizontalBounds(float x)
     {
-        return x < WorldBounds.Instance.b_Right.position.x && x > WorldBounds.Instance.b_Left.position.x;
+        if (!WorldBounds.Instance.castleBounds)
+            return x > WorldBounds.Instance.b_defaultMin.position.x && x < WorldBounds.Instance.b_defaultMax.position.x;
+        else
+            return x > WorldBounds.Instance.b_castleMin.position.x && x < WorldBounds.Instance.b_castleMax.position.x;
     }
 
     void MovementAnimation()
@@ -63,11 +65,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetInteger("State", (int)States.Run);
         else
             animator.SetInteger("State", (int)States.Idle);
-    }
-
-    void TurnSprite(float x)
-    {
-        transform.localScale = new Vector2(x / 2f, 0.5f);
     }
 
 }

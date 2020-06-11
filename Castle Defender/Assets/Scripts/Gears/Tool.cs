@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 public class Tool : Gear
 {
+    public float radius;
+
     public enum ToolType
     {
         Axe,
@@ -18,7 +20,7 @@ public class Tool : Gear
         ToolTarget toolTarget = GetToolTarget();
 
         PlayerController.Instance.playerAnimator.SetTrigger("Swing");
-        if (toolTarget == null)
+        if (toolTarget == null || Vector2.Distance(toolTarget.transform.position,transform.position) > radius)
             return;
 
         switch (toolType)
