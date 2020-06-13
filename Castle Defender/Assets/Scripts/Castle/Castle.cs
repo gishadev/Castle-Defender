@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Castle : MonoBehaviour
+public class Castle : MonoBehaviour, IDamageable
 {
     #region Singleton
     public static Castle Instance;
@@ -31,20 +31,25 @@ public class Castle : MonoBehaviour
             outerPart.SetActive(true);
             innerPart.SetActive(false);
         }
-            
+
+    }
+
+    public void GetDamage(int dmg)
+    {
+
     }
 
     //outer part disappears when triggers
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerFoots"))
             UpdateVisibility(true);
     }
 
     //outer part appears when triggers
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerFoots"))
             UpdateVisibility(false);
     }
 }

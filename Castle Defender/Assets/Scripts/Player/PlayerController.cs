@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     #region Singleton
     public static PlayerController Instance;
     #endregion
+    public int health;
 
     [HideInInspector] public Animator playerAnimator;
 
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
     }
     void TurnPlayer(float x)
     {
-        transform.localScale = new Vector2(x * 0.5f, 0.5f);
+        transform.localScale = new Vector2(x, 1f);
     }
 
     public void TakeGear(InventoryGear invGear)
@@ -84,5 +85,18 @@ public class PlayerController : MonoBehaviour
     {
         if (nowGear != null)                 // Deleting an Old Gear
             Destroy(nowGear.gameObject);    //
+    }
+
+    public void GetDamage(int dmg)
+    {
+        health -= dmg;
+
+        if (health <= 0)
+            Die();
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }

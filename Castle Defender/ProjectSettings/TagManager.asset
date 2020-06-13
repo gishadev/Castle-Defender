@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - ToolTarget
+  - Enemy
+  - Castle
+  - PlayerFoots
   layers:
   - Default
   - TransparentFX
@@ -14,10 +17,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Environment
+  - Enemies Wall
   - 
   - 
   - 

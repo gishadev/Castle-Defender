@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5893989743331939908}
   - component: {fileID: 828366740698438856}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8054247687297158939}
   - component: {fileID: 4690773562263549771}
   - component: {fileID: 1037256529438497015}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gold_02
   m_TagString: ToolTarget
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7055379755724766208}
   - component: {fileID: 4263647548103832287}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Custom Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

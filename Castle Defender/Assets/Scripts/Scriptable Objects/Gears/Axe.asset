@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Axe
   m_EditorClassIdentifier: 
   prefab: {fileID: 5235505910462161655, guid: 9a7c8e4f772075b4d85552beb47fe391, type: 3}
-  spawnPosition: {x: 0, y: 1.63, z: 0}
+  spawnPosition: {x: 0, y: 0.8, z: 0}

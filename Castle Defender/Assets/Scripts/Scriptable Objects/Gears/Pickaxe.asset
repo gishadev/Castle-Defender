@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Pickaxe
   m_EditorClassIdentifier: 
   prefab: {fileID: 7199290378043132088, guid: 82d187b63df113445b45fb1bd33e32dc, type: 3}
-  spawnPosition: {x: 0, y: 1.63, z: 0}
+  spawnPosition: {x: 0, y: 0.8, z: 0}

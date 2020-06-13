@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 435358544502450660}
   - component: {fileID: 8948131422623736998}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Custom Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 764297014804339721}
   - component: {fileID: 1264696900268554963}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 3424803378515437939}
   - component: {fileID: 540317835753865740}
   - component: {fileID: 4675986725209722340}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tree_02
   m_TagString: ToolTarget
   m_Icon: {fileID: 0}

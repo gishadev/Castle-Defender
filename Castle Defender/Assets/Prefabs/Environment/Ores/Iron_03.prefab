@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5678839146886368986}
   - component: {fileID: 8797314929270513537}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1000577150177007743}
   - component: {fileID: 4130021658003643513}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Custom Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 6331068029395308898}
   - component: {fileID: 1096383744399291671}
   - component: {fileID: -7040292791325970358}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Iron_03
   m_TagString: ToolTarget
   m_Icon: {fileID: 0}
