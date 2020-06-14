@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ResourceProvider : ToolTarget
+public class ResourceProvider : InteractTarget
 {
     public string targetResourceName;
     //HP 

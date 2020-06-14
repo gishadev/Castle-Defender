@@ -4,7 +4,9 @@ using UnityEngine.UI;
 public class Hotbar : MonoBehaviour
 {
     public InventoryGear[] inventoryGears = new InventoryGear[9];
-    public Image[] hotkeys = new Image[9];
+    public Transform hotkeysParent;
+
+    Hotkey[] hotkeys = new Hotkey[9];
 
     public Color selectedColor, unselectedColor;
 
@@ -25,6 +27,13 @@ public class Hotbar : MonoBehaviour
 
     void Start()
     {
+        for (int i = 0; i < hotkeys.Length; i++)
+        {
+            hotkeys[i] = new Hotkey(inventoryGears[i], hotkeysParent.GetChild(i).GetComponent<Image>(), hotkeysParent.GetChild(i).GetChild(0).GetComponent<Image>());
+
+            UpdateHotkeyData(hotkeys[i], inventoryGears[i]);
+        }
+
         SelectKey();
     }
 
@@ -39,15 +48,20 @@ public class Hotbar : MonoBehaviour
         for (int i = 0; i < hotkeys.Length; i++)
         {
             if (i == selectedKey)
-                hotkeys[i].color = selectedColor;
+                hotkeys[i].bg.color = selectedColor;
             else
-                hotkeys[i].color = unselectedColor;
+                hotkeys[i].bg.color = unselectedColor;
 
         }
 
         PlayerController.Instance.DeleteOldGear();
         if (inventoryGears[selectedKey] != null)
             PlayerController.Instance.TakeGear(inventoryGears[selectedKey]);
+    }
+
+    void UpdateHotkeyData(Hotkey _hotkey, InventoryGear _gearData)
+    {
+        _hotkey.UpdateData(_gearData);
     }
 
     #region Input
@@ -86,4 +100,32 @@ public class Hotbar : MonoBehaviour
         }
     }
     #endregion Input
+}
+
+//[System.Serializable]
+public class Hotkey
+{
+    public InventoryGear invGear;
+
+    public Image bg;
+    public Image gearSprite;
+
+    public Hotkey(InventoryGear _invGear, Image _bg, Image _gearSprite)
+    {
+        invGear = _invGear;
+        bg = _bg;
+        gearSprite = _gearSprite;
+    }
+
+    public void UpdateData(InventoryGear newInvGear)
+    {
+        invGear = newInvGear;
+
+        if (invGear != null)
+        {
+            gearSprite.enabled = true;
+            gearSprite.sprite = invGear.inventorySprite;
+        }
+        else gearSprite.enabled = false;
+    }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7046855448881796389}
   - component: {fileID: 5566844078575896041}
-  - component: {fileID: 6186894021318929910}
+  - component: {fileID: 5727691529150478998}
   m_Layer: 0
   m_Name: Pickaxe
   m_TagString: Untagged
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6186894021318929910
+--- !u!114 &5727691529150478998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,9 +91,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7199290378043132088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3afa54e8d2e83641b32a618767252f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 42f68e7bd97be5b4aa983512d915e976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.2
-  radius: 3
+  delay: 0.3
+  radius: 5
   toolType: 1

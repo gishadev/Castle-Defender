@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   prefab: {fileID: 2003884311578078235, guid: c97e13f3ad6728c40ac524bb5dda98bd, type: 3}
+  inventorySprite: {fileID: 21300000, guid: 931d8e4c74d645e4fb717fc103387c57, type: 3}
   spawnPosition: {x: 0, y: 1, z: 0}

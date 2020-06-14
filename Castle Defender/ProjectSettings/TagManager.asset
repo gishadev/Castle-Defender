@@ -4,10 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ToolTarget
   - Enemy
   - Castle
   - PlayerFoots
+  - InteractTarget
+  - ToolTarget
   layers:
   - Default
   - TransparentFX

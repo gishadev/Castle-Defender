@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1124030644062141993}
   m_Layer: 10
   m_Name: 'Gold_01 '
-  m_TagString: ToolTarget
+  m_TagString: InteractTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -76,7 +76,8 @@ public class MeleeEnemy : Enemy
 
     public override void Attack()
     {
-        targetToAttack.GetComponent<IDamageable>().GetDamage(damage);
+        if (targetToAttack != null)
+            targetToAttack.GetComponent<IDamageable>().GetDamage(damage);
     }
 
 }

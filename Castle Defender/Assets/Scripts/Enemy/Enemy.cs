@@ -5,17 +5,19 @@ public class Enemy : MonoBehaviour, IDamageable
     public int health;
     public int damage;
     [Space]
-    public int moveSpeed;
+    public float moveSpeed;
 
     [HideInInspector] public Transform targetToFollow;
     [HideInInspector] public Transform targetToAttack;
 
     [HideInInspector] public Animator animator;
-
+    [Header("Effects")]
+    public ParticleSystem e_getDamage;
     void Start()
     {
         TurnEnemy(-1f);
         animator = GetComponent<Animator>();
+        moveSpeed += Random.value * 2f;
     }
 
     public void TurnEnemy(float x)
@@ -30,6 +32,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public void GetDamage(int dmg)
     {
         health -= dmg;
+        e_getDamage.Play();
 
         if (health <= 0)
             Die();

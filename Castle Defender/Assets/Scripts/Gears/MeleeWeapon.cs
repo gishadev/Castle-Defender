@@ -29,10 +29,13 @@ public class MeleeWeapon : Gear
     }
 
 
+    //Damaging enemies
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
+        {
             other.GetComponent<IDamageable>().GetDamage(damage);
+        }
 
         DisableDamageCollider();
     }
