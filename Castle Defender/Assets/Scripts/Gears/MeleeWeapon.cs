@@ -5,26 +5,21 @@ public class MeleeWeapon : Gear
     [SerializeField] private int damage;
     [SerializeField] private float timeToDisableCollider;
     private BoxCollider2D damageCollider;
-    private TrailRenderer trailRenderer;
-
     void Start()
     {
         damageCollider = GetComponent<BoxCollider2D>();
-        trailRenderer = GetComponentInChildren<TrailRenderer>();
         DisableDamageCollider();
     }
 
     void DisableDamageCollider()
     {
         damageCollider.enabled = false;
-        trailRenderer.enabled = false;
     }
 
     public override void Act()
     {
         damageCollider.enabled = true;
-        trailRenderer.enabled = true;
-        PlayerController.Instance.playerAnimator.SetTrigger("Swing");
+        PlayerController.Instance.playerAnimator.SetTrigger("Punch");
         Invoke("DisableDamageCollider", timeToDisableCollider);
     }
 

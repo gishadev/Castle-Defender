@@ -2,26 +2,27 @@
 
 public class InteractTarget : MonoBehaviour
 {
-    Bounds interactBounds;
+    public float radToInteract = 1f;
 
-    void Start()
-    {
-        interactBounds = GetComponent<BoxCollider2D>().bounds;
-    }
+    [HideInInspector] public BoxCollider2D coll;
 
-    public void ShowTargetBounds()
+    private void OnMouseOver()
     {
-        UIManager.Instance.interactBounds.CreateBounds(interactBounds);
-    }
-
-    private void OnMouseEnter()
-    {
-        PlayerController.Instance.nowInteractTarget = this;
+        if (Vector2.Distance(PlayerController.Instance.transform.position, transform.position) < radToInteract)
+        {
+            UIManager.Instance.nowInteractTarget = this;
+            UIManager.Instance.ShowInteractable(coll.bounds);
+        }
+        else
+        {
+            UIManager.Instance.nowInteractTarget = null;
+            UIManager.Instance.HideInteractable();
+        }
     }
 
     private void OnMouseExit()
     {
-        UIManager.Instance.interactBounds.ClearBounds();
-        PlayerController.Instance.nowInteractTarget = null;
+        UIManager.Instance.nowInteractTarget = null;
+        UIManager.Instance.HideInteractable();
     }
 }

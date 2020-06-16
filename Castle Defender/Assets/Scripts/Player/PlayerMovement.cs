@@ -46,17 +46,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsInVerticalBounds(float y)
     {
-        if (!WorldBounds.Instance.castleBounds)
-            return y > WorldBounds.Instance.b_defaultMin.position.y && y < WorldBounds.Instance.b_defaultMax.position.y;
-        else
-            return y > WorldBounds.Instance.b_castleMin.position.y && y < WorldBounds.Instance.b_castleMax.position.y;
+        return y > WorldBounds.Instance.b_Min.position.y && y < WorldBounds.Instance.b_Max.position.y;
     }
     private bool IsInHorizontalBounds(float x)
     {
-        if (!WorldBounds.Instance.castleBounds)
-            return x > WorldBounds.Instance.b_defaultMin.position.x && x < WorldBounds.Instance.b_defaultMax.position.x;
-        else
-            return x > WorldBounds.Instance.b_castleMin.position.x && x < WorldBounds.Instance.b_castleMax.position.x;
+        return x > WorldBounds.Instance.b_Min.position.x && x < WorldBounds.Instance.b_Max.position.x;
     }
 
     void MovementAnimation()

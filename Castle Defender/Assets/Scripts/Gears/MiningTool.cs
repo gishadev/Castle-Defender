@@ -10,24 +10,30 @@ public class MiningTool : Gear
     }
 
     public ToolType toolType;
+    bool isReady;
 
     ResourceProvider resourceProvider;
-    bool isReady;
+    Camera cam;
+
+    void Start()
+    {
+        cam = Camera.main;
+    }
 
     void Update()
     {
-        resourceProvider = (ResourceProvider)PlayerController.Instance.nowInteractTarget;
+        resourceProvider = CheckForResourceProvider();
         // Checking conditions
         if (resourceProvider == null || Vector2.Distance(resourceProvider.transform.position, transform.position) > radius || (int)resourceProvider.canBeGatheredWith != (int)toolType)
         {
             isReady = false;
 
-            UIManager.Instance.interactBounds.ClearBounds();
+            UIManager.Instance.miningBounds.ClearBounds();
             return;
         }
 
         isReady = true;
-        PlayerController.Instance.nowInteractTarget.ShowTargetBounds();
+        UIManager.Instance.miningBounds.CreateBounds(resourceProvider.boxCollider.bounds);
     }
 
     public override void Act()
@@ -37,11 +43,19 @@ public class MiningTool : Gear
             resourceProvider.GetHit();
     }
 
-    //InteractTarget GetInteractTarget()
-    //{
-    //    Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //    RaycastHit2D hitInfo = Physics2D.Raycast(cursorPos, Vector3.zero, 0f);
+    ResourceProvider CheckForResourceProvider()
+    {
+        Collider2D[] coll = Physics2D.OverlapCircleAll(cam.ScreenToWorldPoint(Input.mousePosition), 0.1f);
 
-    //    return hitInfo.collider != null && hitInfo.collider.CompareTag("InteractTarget") ? hitInfo.collider.GetComponent<InteractTarget>() : null;
-    //}
+        if (coll.Length > 0)
+        {
+            for (int i = 0; i < coll.Length; i++)
+            {
+                if (coll[i].CompareTag("Resource"))
+                    return coll[i].GetComponent<ResourceProvider>();
+            }  
+        }
+
+        return null;
+    }
 }

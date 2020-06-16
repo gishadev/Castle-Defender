@@ -5,10 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Castle
   - PlayerFoots
   - InteractTarget
-  - ToolTarget
+  - Undefined
+  - Resource
+  - Hotkey
+  - InvSlot
   layers:
   - Default
   - TransparentFX

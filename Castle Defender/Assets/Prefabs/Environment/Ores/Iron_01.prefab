@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -6800034513532561802}
   m_Layer: 10
   m_Name: Iron_01
-  m_TagString: InteractTarget
+  m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -52,7 +52,7 @@ public class WavesManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Vector2 spawnPos = new Vector2(WorldBounds.Instance.b_defaultMax.position.x, Random.Range(WorldBounds.Instance.b_defaultMax.position.y, WorldBounds.Instance.b_defaultMin.position.y));
+        Vector2 spawnPos = new Vector2(WorldBounds.Instance.b_Max.position.x, Random.Range(WorldBounds.Instance.b_Max.position.y, WorldBounds.Instance.b_Min.position.y));
         GameObject.Instantiate(enemyPrefab, spawnPos, enemyPrefab.transform.rotation, enemiesParent);
     }
 }

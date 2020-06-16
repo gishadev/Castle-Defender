@@ -8,30 +8,51 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     #endregion
 
-    public TMP_Text WoodText;
-    public TMP_Text StoneText;
-    public TMP_Text IronText;
-    public TMP_Text GoldText;
     [Space]
     public GameObject pressToInteractBtn;
     [Space]
-    public InteractBounds interactBounds;
+    public ColliderUIBounds interactBounds;
+    public ColliderUIBounds miningBounds;
+
+    [HideInInspector] public InteractTarget nowInteractTarget;
+
+    [HideInInspector] public Inventory inventory;
+    [HideInInspector] public Hotbar hotbar;
+    [HideInInspector] public Crafting crafting;
     void Awake()
     {
         Instance = this;
+
+        inventory = FindObjectOfType<Inventory>();
+        hotbar = FindObjectOfType<Hotbar>();
+        crafting = FindObjectOfType<Crafting>();
     }
 
-    public void UpdateResourcesUIData()
+    public void ShowInteractable(Bounds _bounds)
     {
-        WoodText.text = ResourceManager.Instance.GetResource("Wood").count.ToString();
-        StoneText.text = ResourceManager.Instance.GetResource("Stone").count.ToString();
-        IronText.text = ResourceManager.Instance.GetResource("Iron").count.ToString();
-        GoldText.text = ResourceManager.Instance.GetResource("Gold").count.ToString();
+        pressToInteractBtn.transform.position = Camera.main.WorldToScreenPoint(new Vector2(_bounds.center.x, _bounds.max.y + 0.5f));
+
+        interactBounds.CreateBounds(_bounds);
+        pressToInteractBtn.SetActive(true);
+    }
+
+    public void HideInteractable()
+    {
+        interactBounds.ClearBounds();
+        pressToInteractBtn.SetActive(false);
+    }
+
+    public void UpdateResourcesUIData(ResourceCount[] resCount)
+    {
+        for (int i = 0; i < resCount.Length; i++)
+        {
+            resCount[i].UIText.text = resCount[i].count.ToString();
+        }
     }
 }
 
 [System.Serializable]
-public class InteractBounds
+public class ColliderUIBounds
 {
     public GameObject boundsGO;
     [Header("Points")]

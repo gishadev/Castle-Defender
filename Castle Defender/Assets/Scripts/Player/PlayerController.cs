@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     float gearDelay;
 
     Camera cam;
-    [HideInInspector] public InteractTarget nowInteractTarget;
     void Awake()
     {
         Instance = this;
@@ -63,7 +62,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             direction *= new Vector2(-1f, 1f);
         }
 
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + nowGear.zOffset;
         zRotatorTrans.localRotation = Quaternion.Euler(transform.forward * Mathf.Clamp(rotZ, minZ, maxZ));
     }
     void TurnPlayer(float x)
@@ -71,9 +70,9 @@ public class PlayerController : MonoBehaviour, IDamageable
         transform.localScale = new Vector2(x, 1f);
     }
 
-    public void TakeGear(InventoryGear invGear)
+    public void SpawnGear(InventoryGearData invGear)
     {
-        UIManager.Instance.interactBounds.ClearBounds();
+        UIManager.Instance.miningBounds.ClearBounds();
 
         GameObject gearGO = GameObject.Instantiate(invGear.prefab, invGear.spawnPosition, Quaternion.identity, handTrans);
         gearGO.transform.localPosition = invGear.spawnPosition;
