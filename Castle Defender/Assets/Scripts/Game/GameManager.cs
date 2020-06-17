@@ -7,15 +7,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     #endregion
 
-    public Transform castleTrans;
+    [HideInInspector] public WavesManager waves;
 
 
     void Awake()
     {
         Instance = this;
-    }
-
-    void Start()
-    {
+        waves = FindObjectOfType<WavesManager>();
     }
 }

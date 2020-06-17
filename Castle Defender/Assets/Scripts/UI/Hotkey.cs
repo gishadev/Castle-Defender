@@ -6,15 +6,11 @@ public class Hotkey : MonoBehaviour
 
     [HideInInspector] public Image bg;
     [HideInInspector] public Image gearImg;
-
-    void Start()
+    public void UpdateData(InventoryGearData newInvGear)
     {
         bg = GetComponent<Image>();
         gearImg = transform.GetChild(0).GetComponent<Image>();
-    }
 
-    public void UpdateData(InventoryGearData newInvGear)
-    {
         invGear = newInvGear;
 
         if (invGear != null)

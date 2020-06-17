@@ -2,6 +2,7 @@
 using System.Collections;
 public class WavesManager : MonoBehaviour
 {
+    public bool isWave = false;
     [SerializeField] private int nowWave = 0;
     [Space]
     public float waveTime;
@@ -26,10 +27,17 @@ public class WavesManager : MonoBehaviour
         while (true)
         {
             //Break
+            isWave = false;
+            UIManager.Instance.StartCoroutine(UIManager.Instance.BreakTimer());
+
             nowWave++;
+            UIManager.Instance.ChangeWaveCount(nowWave);
             Debug.Log("Now wave is " + nowWave);
             yield return new WaitForSeconds(breakTime);
             //Wave
+            isWave = true;
+            UIManager.Instance.StartCoroutine(UIManager.Instance.WaveTimer());
+
             if (enemiesToSpawn + 5 < maxEnemiesToSpawn)
                 enemiesToSpawn += 5;
             StartCoroutine(EnemiesSpawn(enemiesToSpawn));

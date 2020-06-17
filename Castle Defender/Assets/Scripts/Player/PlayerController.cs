@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     #endregion
     public int health;
 
+    [HideInInspector] public int nowHealth;
+
     [HideInInspector] public Animator playerAnimator;
 
     [HideInInspector] public Gear nowGear;
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void Start()
     {
+        nowHealth = health;
+
         cam = Camera.main;
         playerAnimator = GetComponent<Animator>();
     }
@@ -72,8 +76,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void SpawnGear(InventoryGearData invGear)
     {
-        UIManager.Instance.miningBounds.ClearBounds();
-
         GameObject gearGO = GameObject.Instantiate(invGear.prefab, invGear.spawnPosition, Quaternion.identity, handTrans);
         gearGO.transform.localPosition = invGear.spawnPosition;
         gearGO.transform.localRotation = Quaternion.Euler(Vector3.zero);
@@ -91,9 +93,11 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void GetDamage(int dmg)
     {
-        health -= dmg;
+        nowHealth -= dmg;
 
-        if (health <= 0)
+        UIManager.Instance.UpdatePlayerHealthSlider();
+
+        if (nowHealth <= 0)
             Die();
     }
 

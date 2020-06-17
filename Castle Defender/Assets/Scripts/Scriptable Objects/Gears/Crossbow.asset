@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Crossbow
   m_EditorClassIdentifier: 
   m_name: Crossbow
-  prefab: {fileID: 6999708298573730734, guid: c585fc9d6b4ee02439dd53cb369289f7, type: 3}
-  inventorySprite: {fileID: 21300000, guid: 42de5b468e0cd1d41a5005a15a59353f, type: 3}
-  spawnPosition: {x: 0, y: 2, z: 0}
+  prefab: {fileID: 6336679103572521258, guid: f65fb9462ce4a274fb3fd0a418007b2d, type: 3}
+  inventorySprite: {fileID: 21300000, guid: 5f1a92400688d944280e509df26d95a2, type: 3}
+  spawnPosition: {x: 0.813, y: 0.325, z: 0}
