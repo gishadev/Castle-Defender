@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     void Die()
     {
+        GameManager.Instance.waves.enemiesCount--;
         Destroy(gameObject);
     }
 

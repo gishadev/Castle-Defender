@@ -40,7 +40,11 @@ public class MiningTool : Gear
     {
         PlayerController.Instance.playerAnimator.SetTrigger("Swing");
         if (isReady)
+        {
             resourceProvider.GetHit();
+            CameraShaker.Instance.Shake();
+        }
+            
     }
 
     ResourceProvider CheckForResourceProvider()

@@ -2,11 +2,37 @@
 
 public class Castle : MonoBehaviour, IDamageable
 {
+    #region Singleton
+    public static Castle Instance { get; private set; }
+    #endregion
+
+    public Transform healthbarPos;
+
     public int health;
+    [HideInInspector] public int nowHealth;
 
-    public void GetDamage(int dmg) 
+    void Awake()
     {
-
+        Instance = this;
     }
 
+    void Start()
+    {
+        nowHealth = health;
+    }
+
+    public void GetDamage(int dmg)
+    {
+        nowHealth -= dmg;
+
+        UIManager.Instance.UpdateCastleHealthSlider();
+
+        if (nowHealth <= 0)
+            DestroyCastle();
+    }
+
+    void DestroyCastle()
+    {
+        Debug.Log("The town was destroyed");
+    }
 }

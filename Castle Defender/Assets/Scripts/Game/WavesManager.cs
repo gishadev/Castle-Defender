@@ -3,6 +3,7 @@ using System.Collections;
 public class WavesManager : MonoBehaviour
 {
     public bool isWave = false;
+    bool isEnemiesSpawned = false;
     [SerializeField] private int nowWave = 0;
     [Space]
     public float waveTime;
@@ -13,6 +14,7 @@ public class WavesManager : MonoBehaviour
     public Transform enemiesParent;
     public GameObject enemyPrefab;
     [Space]
+    [HideInInspector] public int enemiesCount = 0;
     private int enemiesToSpawn = 5;
     //private int enemiesSpawned;
     private int maxEnemiesToSpawn = 50;
@@ -20,6 +22,17 @@ public class WavesManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(Game());
+    }
+
+    void LateUpdate()
+    {
+        //If player killed all enemies => break
+        if (isEnemiesSpawned && enemiesCount == 0)
+        {
+            StopCoroutine(Game());
+            StartCoroutine(Game());
+            isEnemiesSpawned = false;
+        }
     }
 
     public IEnumerator Game()
@@ -49,13 +62,16 @@ public class WavesManager : MonoBehaviour
     IEnumerator EnemiesSpawn(int countToSpawn)
     {
         int enemiesSpawned = 0;
-
+        isEnemiesSpawned = false;
         while (enemiesSpawned < countToSpawn)
         {
             SpawnEnemy();
+            enemiesCount++;
             enemiesSpawned++;
             yield return new WaitForSeconds(spawnRate);
         }
+
+        isEnemiesSpawned = true;
     }
 
     void SpawnEnemy()

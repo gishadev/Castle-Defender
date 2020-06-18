@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     public static PlayerController Instance;
     #endregion
     public int health;
-
     [HideInInspector] public int nowHealth;
 
     [HideInInspector] public Animator playerAnimator;
@@ -94,7 +93,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void GetDamage(int dmg)
     {
         nowHealth -= dmg;
-
         UIManager.Instance.UpdatePlayerHealthSlider();
 
         if (nowHealth <= 0)
@@ -103,6 +101,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        Destroy(gameObject);
+        GameManager.Instance.StartRespawning();
+        gameObject.SetActive(false);
     }
 }

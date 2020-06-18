@@ -15,7 +15,15 @@ public class UIManager : MonoBehaviour
     public ColliderUIBounds interactBounds;
     public ColliderUIBounds miningBounds;
 
+    [Header("Player")]
     public Slider playerHealth;
+    [Space]
+    public GameObject respawningMenu;
+    public Image respawningCircleImg;
+    public TMP_Text respawningTime;
+
+    [Space]
+    public Slider castleHealth;
     [Space]
     [Header("Game Timer")]
     public TMP_Text waveCountText;
@@ -55,6 +63,12 @@ public class UIManager : MonoBehaviour
     {
         //Health bar follows player
         PivotPlayerHealth();
+        PivotCastleHealth();
+
+        if (GameManager.Instance.isRespawning)
+        {
+            UpdateRespawningInfo();
+        }
     }
     #region Player
     void PivotPlayerHealth()
@@ -69,6 +83,40 @@ public class UIManager : MonoBehaviour
 
         if (playerHealth.value == 0)
             playerHealth.gameObject.SetActive(false);
+        else
+            playerHealth.gameObject.SetActive(true);
+    }
+
+    public void ActivateRespawningMenu()
+    {
+        respawningMenu.SetActive(true);
+    }
+
+    public void UpdateRespawningInfo()
+    {
+        respawningCircleImg.fillAmount = GameManager.Instance.nowPlayerRespawningTime / GameManager.Instance.playerRespawningTime;
+        respawningTime.text = Mathf.Round(GameManager.Instance.nowPlayerRespawningTime).ToString();
+    }
+
+    public void DeactivateRespawningMenu()
+    {
+        respawningMenu.SetActive(false);
+    }
+    #endregion
+
+    #region Castle
+    void PivotCastleHealth()
+    {
+        Vector2 screenPos = cam.WorldToScreenPoint(Castle.Instance.healthbarPos.position);
+        castleHealth.transform.position = screenPos + Vector2.up * -80f;
+    }
+
+    public void UpdateCastleHealthSlider()
+    {
+        castleHealth.value = (float)Castle.Instance.nowHealth / (float)Castle.Instance.health;
+
+        if (castleHealth.value == 0)
+            castleHealth.gameObject.SetActive(false);
     }
     #endregion
 

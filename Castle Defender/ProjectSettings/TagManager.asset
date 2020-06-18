@@ -7,10 +7,10 @@ TagManager:
   - Enemy
   - PlayerFoots
   - InteractTarget
-  - Undefined
   - Resource
   - Hotkey
   - InvSlot
+  - Castle
   layers:
   - Default
   - TransparentFX
