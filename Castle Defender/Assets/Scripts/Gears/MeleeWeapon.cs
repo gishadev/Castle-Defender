@@ -3,6 +3,7 @@
 public class MeleeWeapon : Gear
 {
     [SerializeField] private int damage;
+    [SerializeField] private float knockback;
     [SerializeField] private float timeToDisableCollider;
     private BoxCollider2D damageCollider;
     void Start()
@@ -30,6 +31,7 @@ public class MeleeWeapon : Gear
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<IDamageable>().GetDamage(damage);
+            other.GetComponent<Rigidbody2D>().AddForce(PlayerController.Instance.transform.localScale.x * PlayerController.Instance.lookDirection.normalized * knockback, ForceMode2D.Impulse);
         }
 
         DisableDamageCollider();

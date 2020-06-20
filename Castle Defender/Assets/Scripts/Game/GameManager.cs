@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     #region Singleton
@@ -26,6 +27,18 @@ public class GameManager : MonoBehaviour
                 PlayerRespawn();
             }   
         }
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
+    }
+
+    public void EndGame()
+    {
+        UIManager.Instance.loseMenu.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void StartRespawning()

@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     public LayerMask whatIsSolid;
     [HideInInspector] public float speed;
     [HideInInspector] public int damage;
+    [HideInInspector] public float knockback;
 
     float direction;
 
@@ -25,7 +26,10 @@ public class Projectile : MonoBehaviour
         if (hitInfo.collider != null)
         {
             if (hitInfo.collider.CompareTag("Enemy"))
+            {
                 hitInfo.collider.GetComponent<IDamageable>().GetDamage(damage);
+                hitInfo.collider.GetComponent<Rigidbody2D>().AddForce(transform.right * direction * knockback, ForceMode2D.Impulse);
+            }
 
             DestroyProj();
         }

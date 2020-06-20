@@ -7,19 +7,22 @@ TextureImporter:
     second: Head
   - first:
       213: -2485871483528494817
-    second: L_Hand
+    second: L_Arm
   - first:
       213: 6284166523789267160
     second: Body
   - first:
       213: -8585762769051335824
-    second: R_Hand
+    second: R_Arm
   - first:
       213: -980516788960830398
     second: L_Leg
   - first:
       213: 9211052458692073003
     second: R_Leg
+  - first:
+      213: -1977811604655986376
+    second: Zombie_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -108,8 +111,8 @@ TextureImporter:
       name: Head
       rect:
         serializedVersion: 2
-        x: 186
-        y: 351
+        x: 187
+        y: 350
         width: 148
         height: 148
       alignment: 0
@@ -126,7 +129,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: L_Hand
+      name: L_Arm
       rect:
         serializedVersion: 2
         x: 328
@@ -134,7 +137,7 @@ TextureImporter:
         width: 163
         height: 67
       alignment: 9
-      pivot: {x: 0.2049542, y: 0.5}
+      pivot: {x: 0.201865, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,7 +171,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: R_Hand
+      name: R_Arm
       rect:
         serializedVersion: 2
         x: 331
@@ -176,7 +179,7 @@ TextureImporter:
         width: 164
         height: 66
       alignment: 9
-      pivot: {x: 0.2049542, y: 0.5}
+      pivot: {x: 0.201865, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -197,7 +200,7 @@ TextureImporter:
         width: 51
         height: 114
       alignment: 9
-      pivot: {x: 0.5, y: 0.7780371}
+      pivot: {x: 0.5, y: 0.7783825}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -218,7 +221,7 @@ TextureImporter:
         width: 51
         height: 114
       alignment: 9
-      pivot: {x: 0.5, y: 0.7780371}
+      pivot: {x: 0.5, y: 0.7783825}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -226,6 +229,27 @@ TextureImporter:
       bones: []
       spriteID: b2654dfa86b34df70800000000000000
       internalID: 9211052458692073003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zombie_6
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 163
+        width: 29
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 839a5df03d66d84e0800000000000000
+      internalID: -1977811604655986376
       vertices: []
       indices: 
       edges: []

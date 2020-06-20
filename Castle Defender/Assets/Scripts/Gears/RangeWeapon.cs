@@ -8,6 +8,7 @@ public class RangeWeapon : Gear
 
     [SerializeField] private int projDamage;
     [SerializeField] private float projSpeed;
+    [SerializeField] private float projKnockback;
 
     public override void Act()
     {

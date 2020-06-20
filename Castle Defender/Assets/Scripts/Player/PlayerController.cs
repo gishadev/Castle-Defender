@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     float gearDelay;
 
     Camera cam;
+
+    public Vector2 lookDirection;
     void Awake()
     {
         Instance = this;
@@ -55,17 +57,17 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void ZRotate()
     {
-        Vector2 direction = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+         lookDirection = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
-        if (direction.x > 0)
+        if (lookDirection.x > 0)
             TurnPlayer(1f);
-        else if (direction.x < 0)
+        else if (lookDirection.x < 0)
         {
             TurnPlayer(-1f);
-            direction *= new Vector2(-1f, 1f);
+            lookDirection *= new Vector2(-1f, 1f);
         }
 
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + nowGear.zOffset;
+        float rotZ = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg + nowGear.zOffset;
         zRotatorTrans.localRotation = Quaternion.Euler(transform.forward * Mathf.Clamp(rotZ, minZ, maxZ));
     }
     void TurnPlayer(float x)

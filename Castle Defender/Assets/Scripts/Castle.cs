@@ -33,6 +33,6 @@ public class Castle : MonoBehaviour, IDamageable
 
     void DestroyCastle()
     {
-        Debug.Log("The town was destroyed");
+        GameManager.Instance.EndGame();
     }
 }

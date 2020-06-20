@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 public class WavesManager : MonoBehaviour
 {
     public bool isWave = false;
@@ -12,7 +13,9 @@ public class WavesManager : MonoBehaviour
     public float spawnRate;
     [Space]
     public Transform enemiesParent;
-    public GameObject enemyPrefab;
+    public GameObject[] enemiesPrefabs;
+    private List<GameObject> availableEnemies = new List<GameObject>();
+
     [Space]
     [HideInInspector] public int enemiesCount = 0;
     private int enemiesToSpawn = 5;
@@ -45,7 +48,8 @@ public class WavesManager : MonoBehaviour
 
             nowWave++;
             UIManager.Instance.ChangeWaveCount(nowWave);
-            Debug.Log("Now wave is " + nowWave);
+
+            CheckForAvailableEnemies();
             yield return new WaitForSeconds(breakTime);
             //Wave
             isWave = true;
@@ -76,7 +80,16 @@ public class WavesManager : MonoBehaviour
 
     void SpawnEnemy()
     {
+        GameObject enemyToSpawn = availableEnemies[Random.Range(0, availableEnemies.Count)];
+
         Vector2 spawnPos = new Vector2(WorldBounds.Instance.b_Max.position.x, Random.Range(WorldBounds.Instance.b_Max.position.y, WorldBounds.Instance.b_Min.position.y));
-        GameObject.Instantiate(enemyPrefab, spawnPos, enemyPrefab.transform.rotation, enemiesParent);
+        GameObject.Instantiate(enemyToSpawn, spawnPos, enemyToSpawn.transform.rotation, enemiesParent);
+    }
+
+    void CheckForAvailableEnemies()
+    {
+        foreach (GameObject enemyGO in enemiesPrefabs)
+            if (nowWave == enemyGO.GetComponent<Enemy>().minWave)
+                availableEnemies.Add(enemyGO);
     }
 }

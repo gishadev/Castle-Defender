@@ -27,10 +27,13 @@ public class ResourceProvider : MonoBehaviour
 
     public int minFinalSupply;
     public int maxFinalSupply;
+    [Space]
+    public ParticleSystem particles;
 
     public void GetHit()
     {
         hitPoints--;
+        particles.Play();
         if (hitPoints <= 0)
             DestroyRP();
 

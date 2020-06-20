@@ -41,7 +41,6 @@ public class MeleeEnemy : Enemy
             return;
         }
 
-
         targetToFollow = coll.transform;
     }
 

@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     #endregion
 
+    public GameObject loseMenu;
     [Space]
     public GameObject pressToInteractBtn;
     [Space]
@@ -36,10 +37,10 @@ public class UIManager : MonoBehaviour
     public Color waveTimerColor;
 
     [Tooltip("Icon that represents current wave or break")]
-    public Image gameTimeIcon;
+    public SVGImage gameTimeIcon;
 
-    public Color breakIconColor;
-    public Color waveIconColor;
+    public Sprite breakIconSprite;
+    public Sprite waveIconSprite;
 
     [HideInInspector] public InteractTarget nowInteractTarget;
 
@@ -70,6 +71,12 @@ public class UIManager : MonoBehaviour
             UpdateRespawningInfo();
         }
     }
+
+    public void OnRetryBtn()
+    {
+        GameManager.Instance.Restart();
+    }
+
     #region Player
     void PivotPlayerHealth()
     {
@@ -125,7 +132,7 @@ public class UIManager : MonoBehaviour
     {
         float time = GameManager.Instance.waves.waveTime + 1;
         timerFill.color = waveTimerColor;
-        gameTimeIcon.color = waveIconColor;
+        gameTimeIcon.sprite = waveIconSprite;
 
         while (GameManager.Instance.waves.isWave)
         {
@@ -142,7 +149,7 @@ public class UIManager : MonoBehaviour
     {
         float time = GameManager.Instance.waves.breakTime + 1;
         timerFill.color = breakTimerColor;
-        gameTimeIcon.color = breakIconColor;
+        gameTimeIcon.sprite = breakIconSprite;
 
         while (!GameManager.Instance.waves.isWave)
         {

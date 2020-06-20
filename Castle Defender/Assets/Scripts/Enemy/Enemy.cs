@@ -2,6 +2,9 @@
 
 public class Enemy : MonoBehaviour, IDamageable
 {
+    // Minimal Wave to appear
+    public int minWave;
+    [Space]
     public int health;
     public int damage;
     [Space]
