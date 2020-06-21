@@ -102,6 +102,7 @@ MonoBehaviour:
     type: 3}
   projDamage: 10
   projSpeed: 25
+  projKnockback: 5
 --- !u!1 &8504375751570823084
 GameObject:
   m_ObjectHideFlags: 0

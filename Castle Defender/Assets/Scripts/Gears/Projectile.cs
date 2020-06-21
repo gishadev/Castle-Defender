@@ -9,17 +9,16 @@ public class Projectile : MonoBehaviour
     [HideInInspector] public int damage;
     [HideInInspector] public float knockback;
 
-    float direction;
+    [HideInInspector] public Vector2 direction;
 
     void Start()
     {
-        direction = PlayerController.Instance.transform.localScale.x;
         Invoke("DestroyProj", lifeTime);
     }
 
     void Update()
     {
-        transform.Translate(transform.right * speed * direction * Time.deltaTime, Space.World);
+        transform.Translate(direction * speed * Time.deltaTime, Space.World);
 
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.right, rayDist, whatIsSolid);
 
@@ -28,7 +27,7 @@ public class Projectile : MonoBehaviour
             if (hitInfo.collider.CompareTag("Enemy"))
             {
                 hitInfo.collider.GetComponent<IDamageable>().GetDamage(damage);
-                hitInfo.collider.GetComponent<Rigidbody2D>().AddForce(transform.right * direction * knockback, ForceMode2D.Impulse);
+                hitInfo.collider.GetComponent<Rigidbody2D>().AddForce(direction * knockback, ForceMode2D.Impulse);
             }
 
             DestroyProj();

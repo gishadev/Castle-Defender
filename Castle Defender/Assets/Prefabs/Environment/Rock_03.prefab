@@ -5020,12 +5020,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d18d26512ff7184fbe057a9e6f693a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetResourceName: Stone
-  hitPoints: 5
+  targetResource: {fileID: 11400000, guid: 564d2ce2ba84c1e4dbc02e3dfb99d3e1, type: 2}
+  hitPoints: 6
   boxCollider: {fileID: 0}
   canBeGatheredWith: 1
-  minSupplyPerHit: 2
-  maxSupplyPerHit: 5
+  minSupplyPerHit: 1
+  maxSupplyPerHit: 3
   minFinalSupply: 7
   maxFinalSupply: 10
   particles: {fileID: 4717646486199378168}

@@ -31,7 +31,7 @@ public class MeleeWeapon : Gear
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<IDamageable>().GetDamage(damage);
-            other.GetComponent<Rigidbody2D>().AddForce(PlayerController.Instance.transform.localScale.x * PlayerController.Instance.lookDirection.normalized * knockback, ForceMode2D.Impulse);
+            other.GetComponent<Rigidbody2D>().AddForce(PlayerController.Instance.lookDirection.normalized * knockback, ForceMode2D.Impulse);
         }
 
         DisableDamageCollider();

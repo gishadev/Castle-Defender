@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [HideInInspector] public Animator animator;
     [Header("Effects")]
     public ParticleSystem e_getDamage;
+    public GameObject dieEffect;
+
     void Start()
     {
         TurnEnemy(-1f);
@@ -43,6 +45,8 @@ public class Enemy : MonoBehaviour, IDamageable
 
     void Die()
     {
+        Instantiate(dieEffect, transform.position, Quaternion.identity);
+
         GameManager.Instance.waves.enemiesCount--;
         Destroy(gameObject);
     }

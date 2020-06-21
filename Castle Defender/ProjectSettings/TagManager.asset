@@ -24,7 +24,7 @@ TagManager:
   - Enemy
   - Environment
   - Enemies Wall
-  - 
+  - PlayerFoots
   - 
   - 
   - 
@@ -47,6 +47,9 @@ TagManager:
   m_SortingLayers:
   - name: BG
     uniqueID: 3307076067
+    locked: 0
+  - name: FG
+    uniqueID: 3715007025
     locked: 0
   - name: Default
     uniqueID: 0

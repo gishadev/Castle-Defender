@@ -21,7 +21,10 @@ public class RangeWeapon : Gear
         GameObject proj = Instantiate(projPrefab, shotPos.position, shotPos.rotation);
 
         Projectile projComp = proj.GetComponent<Projectile>();
-        projComp.speed = projSpeed;
+        projComp.direction = PlayerController.Instance.lookDirection;
+
         projComp.damage = projDamage;
+        projComp.speed = projSpeed;
+        projComp.knockback = projKnockback;
     }
 }

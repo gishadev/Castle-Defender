@@ -2,7 +2,7 @@
 
 public class ResourceProvider : MonoBehaviour
 {
-    public string targetResourceName;
+    public ResourceData targetResource;
     //HP 
     public int hitPoints;
 
@@ -37,12 +37,12 @@ public class ResourceProvider : MonoBehaviour
         if (hitPoints <= 0)
             DestroyRP();
 
-        ResourceManager.Instance.ChangeResourceValue(targetResourceName, +Random.Range(minSupplyPerHit, maxSupplyPerHit));
+        ResourceManager.Instance.ChangeResourceValue(targetResource, +Random.Range(minSupplyPerHit, maxSupplyPerHit));
     }
 
     void DestroyRP()
     {
-        ResourceManager.Instance.ChangeResourceValue(targetResourceName, +Random.Range(minFinalSupply, maxFinalSupply));
+        ResourceManager.Instance.ChangeResourceValue(targetResource, +Random.Range(minFinalSupply, maxFinalSupply));
         Destroy(gameObject);
     }
 }

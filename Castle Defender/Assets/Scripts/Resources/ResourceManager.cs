@@ -12,21 +12,20 @@ public class ResourceManager : MonoBehaviour
     {
         Instance = this;
     }
-
-    public void ChangeResourceValue(string name, int operation)
+    public void ChangeResourceValue(ResourceData resourceData, int operation)
     {
-        ResourceCount resource = GetResource(name);
+        ResourceCount resourceCount = GetResource(resourceData);
 
-        if (resource.count + operation > 0)
-            resource.count += operation;
+        if (resourceCount.count + operation > 0)
+            resourceCount.count += operation;
         else
-            resource.count = 0;
+            resourceCount.count = 0;
 
         UIManager.Instance.UpdateResourcesUIData(resourcesCount);
     }
 
-    public ResourceCount GetResource(string name)
+    public ResourceCount GetResource(ResourceData resource)
     {
-        return Array.Find(resourcesCount, x => x.resourceData.m_name == name);
+        return Array.Find(resourcesCount, x => x.resourceData == resource);
     }
 }

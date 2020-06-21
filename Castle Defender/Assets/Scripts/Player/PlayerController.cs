@@ -16,13 +16,14 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Space]
     public Transform zRotatorTrans;
     public float maxZ, minZ;
-
     [Space]
+    public GameObject dieEffect;
+
     float gearDelay;
 
     Camera cam;
 
-    public Vector2 lookDirection;
+    [HideInInspector] public Vector2 lookDirection { get; private set; }
     void Awake()
     {
         Instance = this;
@@ -57,17 +58,18 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void ZRotate()
     {
-         lookDirection = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        lookDirection = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Vector2 rotateDirection = lookDirection;
 
-        if (lookDirection.x > 0)
+        if (rotateDirection.x > 0)
             TurnPlayer(1f);
-        else if (lookDirection.x < 0)
+        else if (rotateDirection.x < 0)
         {
             TurnPlayer(-1f);
-            lookDirection *= new Vector2(-1f, 1f);
+            rotateDirection *= new Vector2(-1f, 1f);
         }
 
-        float rotZ = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg + nowGear.zOffset;
+        float rotZ = Mathf.Atan2(rotateDirection.y, rotateDirection.x) * Mathf.Rad2Deg + nowGear.zOffset;
         zRotatorTrans.localRotation = Quaternion.Euler(transform.forward * Mathf.Clamp(rotZ, minZ, maxZ));
     }
     void TurnPlayer(float x)
@@ -97,12 +99,16 @@ public class PlayerController : MonoBehaviour, IDamageable
         nowHealth -= dmg;
         UIManager.Instance.UpdatePlayerHealthSlider();
 
+        playerAnimator.SetTrigger("GetDamage");
+
         if (nowHealth <= 0)
             Die();
     }
 
     public void Die()
     {
+        Instantiate(dieEffect, transform.position, Quaternion.identity); 
+
         GameManager.Instance.StartRespawning();
         gameObject.SetActive(false);
     }

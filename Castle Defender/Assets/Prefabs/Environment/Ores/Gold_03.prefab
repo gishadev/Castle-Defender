@@ -233,12 +233,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d18d26512ff7184fbe057a9e6f693a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetResourceName: Gold
-  hitPoints: 5
+  targetResource: {fileID: 11400000, guid: 28a5ea6fa3c7aec4bbb4025a00cb9d23, type: 2}
+  hitPoints: 6
   boxCollider: {fileID: 0}
   canBeGatheredWith: 1
-  minSupplyPerHit: 2
-  maxSupplyPerHit: 5
+  minSupplyPerHit: 1
+  maxSupplyPerHit: 3
   minFinalSupply: 7
   maxFinalSupply: 10
   particles: {fileID: 6913672301644076842}

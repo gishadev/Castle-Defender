@@ -53,11 +53,7 @@ public class MeleeEnemy : Enemy
             targetToAttack = coll.transform;
             return true;
         }
-        else
-        {
-            targetToAttack = null;
-            return false;
-        }
+        return false;
     }
     #endregion
 

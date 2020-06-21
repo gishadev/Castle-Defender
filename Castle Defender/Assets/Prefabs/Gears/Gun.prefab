@@ -125,10 +125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b95f030f2e685445aae05b5630e87e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.5
+  delay: 0.35
   zOffset: 0
   shotPos: {fileID: 4594564074235771102}
-  projPrefab: {fileID: 2864524338971477753, guid: 960fbe0cf426f684696e25b05b61f3c2,
+  projPrefab: {fileID: 2287769373124758690, guid: cb48e0d9f20ce7b4ab562ee504e3e4eb,
     type: 3}
-  projDamage: 3
-  projSpeed: 12
+  projDamage: 2
+  projSpeed: 2.25
+  projKnockback: 3

@@ -43,6 +43,11 @@ public class WavesManager : MonoBehaviour
         while (true)
         {
             //Break
+
+            //Setting Lights
+            LightsManager.Instance.SetDayLight();
+            //
+
             isWave = false;
             UIManager.Instance.StartCoroutine(UIManager.Instance.BreakTimer());
 
@@ -52,6 +57,11 @@ public class WavesManager : MonoBehaviour
             CheckForAvailableEnemies();
             yield return new WaitForSeconds(breakTime);
             //Wave
+
+            //Setting Lights
+            LightsManager.Instance.SetNightLight();
+            //
+
             isWave = true;
             UIManager.Instance.StartCoroutine(UIManager.Instance.WaveTimer());
 
