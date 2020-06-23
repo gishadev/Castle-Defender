@@ -3,6 +3,7 @@
 public class MeleeEnemy : Enemy
 {
     [Header("Melee Variables")]
+    public int damage;
     public LayerMask followLayer;
     public LayerMask attackLayers;
     [Space]
@@ -74,5 +75,4 @@ public class MeleeEnemy : Enemy
         if (targetToAttack != null)
             targetToAttack.GetComponent<IDamageable>().GetDamage(damage);
     }
-
 }

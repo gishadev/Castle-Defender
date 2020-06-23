@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourcePrices:
   - resourceData: {fileID: 11400000, guid: 254d8782a15ae884ab97e4d55a6c3018, type: 2}
-    price: 1
+    price: 25
   - resourceData: {fileID: 11400000, guid: 564d2ce2ba84c1e4dbc02e3dfb99d3e1, type: 2}
-    price: 1
+    price: 20
   - resourceData: {fileID: 11400000, guid: 5db4274d4eefe2247a57ea136fafa3c2, type: 2}
-    price: 1
+    price: 10
   gearData: {fileID: 11400000, guid: d7fdd645751e9a24fa4ec7969cf48804, type: 2}

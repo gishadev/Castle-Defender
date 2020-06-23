@@ -11,6 +11,14 @@ public class Projectile : MonoBehaviour
 
     [HideInInspector] public Vector2 direction;
 
+    public enum Origin
+    {
+        Player,
+        Enemy
+    }
+
+    public Origin origin;
+
     void Start()
     {
         Invoke("DestroyProj", lifeTime);
@@ -24,11 +32,16 @@ public class Projectile : MonoBehaviour
 
         if (hitInfo.collider != null)
         {
-            if (hitInfo.collider.CompareTag("Enemy"))
+            if (origin == Origin.Player)
             {
-                hitInfo.collider.GetComponent<IDamageable>().GetDamage(damage);
-                hitInfo.collider.GetComponent<Rigidbody2D>().AddForce(direction * knockback, ForceMode2D.Impulse);
+                if (hitInfo.collider.CompareTag("Enemy"))
+                {
+                    hitInfo.collider.GetComponent<IDamageable>().GetDamage(damage);
+                    hitInfo.collider.GetComponent<Rigidbody2D>().AddForce(direction * knockback, ForceMode2D.Impulse);
+                }
             }
+            else if (origin == Origin.Enemy)
+                hitInfo.collider.GetComponent<IDamageable>().GetDamage(damage);
 
             DestroyProj();
         }

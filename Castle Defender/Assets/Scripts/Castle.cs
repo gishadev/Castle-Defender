@@ -24,6 +24,7 @@ public class Castle : MonoBehaviour, IDamageable
     public void GetDamage(int dmg)
     {
         nowHealth -= dmg;
+        AudioManager.Instance.Play("Castle_GetHit");
 
         UIManager.Instance.UpdateCastleHealthSlider();
 

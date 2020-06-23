@@ -15,6 +15,12 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public WavesManager waves;
 
+    void Awake()
+    {
+        Instance = this;
+        waves = FindObjectOfType<WavesManager>();
+    }
+
     void Update()
     {
         if (isRespawning)
@@ -31,12 +37,13 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         Time.timeScale = 1f;
     }
 
     public void EndGame()
     {
+        AudioManager.Instance.Play("Lose");
         UIManager.Instance.loseMenu.SetActive(true);
         Time.timeScale = 0;
     }
@@ -59,11 +66,5 @@ public class GameManager : MonoBehaviour
         playerGO.SetActive(true);
 
         UIManager.Instance.DeactivateRespawningMenu();
-    }
-
-    void Awake()
-    {
-        Instance = this;
-        waves = FindObjectOfType<WavesManager>();
     }
 }

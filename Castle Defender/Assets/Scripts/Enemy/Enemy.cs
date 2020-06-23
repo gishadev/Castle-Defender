@@ -6,8 +6,6 @@ public class Enemy : MonoBehaviour, IDamageable
     public int minWave;
     [Space]
     public int health;
-    public int damage;
-    [Space]
     public float moveSpeed;
 
     [HideInInspector] public Transform targetToFollow;
@@ -37,6 +35,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public void GetDamage(int dmg)
     {
         health -= dmg;
+
+        AudioManager.Instance.Play("Enemy_GetHit");
         e_getDamage.Play();
 
         if (health <= 0)
@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     void Die()
     {
+        AudioManager.Instance.Play("Enemy_Destroy");
         Instantiate(dieEffect, transform.position, Quaternion.identity);
 
         GameManager.Instance.waves.enemiesCount--;

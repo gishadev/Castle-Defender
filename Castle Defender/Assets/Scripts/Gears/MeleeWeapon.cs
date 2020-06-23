@@ -20,6 +20,7 @@ public class MeleeWeapon : Gear
     public override void Act()
     {
         damageCollider.enabled = true;
+        AudioManager.Instance.Play("Player_Punch");
         PlayerController.Instance.playerAnimator.SetTrigger("Punch");
         Invoke("DisableDamageCollider", timeToDisableCollider);
     }

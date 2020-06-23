@@ -4,7 +4,7 @@ public class PointLightController : MonoBehaviour
 {
     private Light2D pointLight;
 
-    void Start()
+    void Awake()
     {
         pointLight = GetComponent<Light2D>();
     }

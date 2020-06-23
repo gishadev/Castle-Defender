@@ -19,8 +19,8 @@ public class WavesManager : MonoBehaviour
     [Space]
     [HideInInspector] public int enemiesCount = 0;
     private int enemiesToSpawn = 5;
-    //private int enemiesSpawned;
-    private int maxEnemiesToSpawn = 50;
+
+    private int maxEnemiesToSpawn = 25;
 
     void Start()
     {
@@ -32,9 +32,8 @@ public class WavesManager : MonoBehaviour
         //If player killed all enemies => break
         if (isEnemiesSpawned && enemiesCount == 0)
         {
-            StopCoroutine(Game());
+            StopAllCoroutines();
             StartCoroutine(Game());
-            isEnemiesSpawned = false;
         }
     }
 
@@ -43,32 +42,36 @@ public class WavesManager : MonoBehaviour
         while (true)
         {
             //Break
-
+            isEnemiesSpawned = false;
             //Setting Lights
             LightsManager.Instance.SetDayLight();
-            //
 
             isWave = false;
+            
             UIManager.Instance.StartCoroutine(UIManager.Instance.BreakTimer());
 
             nowWave++;
             UIManager.Instance.ChangeWaveCount(nowWave);
 
+            //Adding new types of enemies to the wave
             CheckForAvailableEnemies();
+
+            Music.Instance.StartFade();
             yield return new WaitForSeconds(breakTime);
             //Wave
 
             //Setting Lights
             LightsManager.Instance.SetNightLight();
-            //
 
             isWave = true;
+            
             UIManager.Instance.StartCoroutine(UIManager.Instance.WaveTimer());
 
             if (enemiesToSpawn + 5 < maxEnemiesToSpawn)
-                enemiesToSpawn += 5;
+                enemiesToSpawn += 3;
             StartCoroutine(EnemiesSpawn(enemiesToSpawn));
 
+            Music.Instance.StartFade();
             yield return new WaitForSeconds(waveTime);
         }
     }

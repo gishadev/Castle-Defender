@@ -101,7 +101,7 @@ MonoBehaviour:
   projPrefab: {fileID: 2864524338971477753, guid: 960fbe0cf426f684696e25b05b61f3c2,
     type: 3}
   projDamage: 10
-  projSpeed: 25
+  projSpeed: 8
   projKnockback: 5
 --- !u!1 &8504375751570823084
 GameObject:

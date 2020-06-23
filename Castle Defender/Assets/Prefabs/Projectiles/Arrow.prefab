@@ -238,6 +238,7 @@ MonoBehaviour:
   damage: 0
   knockback: 0
   direction: {x: 0, y: 0}
+  origin: 0
 --- !u!1 &8266999285018852012
 GameObject:
   m_ObjectHideFlags: 0

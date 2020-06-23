@@ -123,6 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0.3
   zOffset: -90
-  damage: 10
+  damage: 5
   knockback: 15
   timeToDisableCollider: 0.12

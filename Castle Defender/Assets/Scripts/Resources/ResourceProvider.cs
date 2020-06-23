@@ -33,6 +33,7 @@ public class ResourceProvider : MonoBehaviour
     public void GetHit()
     {
         hitPoints--;
+        AudioManager.Instance.Play("RP_GetHit");
         particles.Play();
         if (hitPoints <= 0)
             DestroyRP();
@@ -42,6 +43,7 @@ public class ResourceProvider : MonoBehaviour
 
     void DestroyRP()
     {
+        AudioManager.Instance.Play("RP_Destroy");
         ResourceManager.Instance.ChangeResourceValue(targetResource, +Random.Range(minFinalSupply, maxFinalSupply));
         Destroy(gameObject);
     }
