@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: bp_Spear
   m_EditorClassIdentifier: 
   resourcePrices:
-  - resourceData: {fileID: 11400000, guid: 254d8782a15ae884ab97e4d55a6c3018, type: 2}
-    price: 15
+  - resourceData: {fileID: 11400000, guid: 564d2ce2ba84c1e4dbc02e3dfb99d3e1, type: 2}
+    price: 20
   - resourceData: {fileID: 11400000, guid: 5db4274d4eefe2247a57ea136fafa3c2, type: 2}
     price: 30
   gearData: {fileID: 11400000, guid: 67af89caa8d489342becc8f60036b359, type: 2}

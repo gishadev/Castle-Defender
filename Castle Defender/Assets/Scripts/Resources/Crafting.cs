@@ -100,7 +100,7 @@ public class Crafting : MonoBehaviour
         for (int i = 0; i < resPrices.Length; i++)
         {
             ResourceCount resCount = ResourceManager.Instance.resourcesCount.FirstOrDefault(x => x.resourceData == resPrices[i].resourceData);
-            resCount.count -= resPrices[i].price;
+            ResourceManager.Instance.ChangeResourceValue(resPrices[i].resourceData, -resPrices[i].price);
         }
     }
 
